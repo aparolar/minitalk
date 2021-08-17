@@ -1,10 +1,10 @@
-C_NAME		=	mtclient
+C_NAME		=	client
 
-S_NAME		=	mtserver
+S_NAME		=	server
 
-SERVER		=	src/server
+SERVER		=	src/server/
 
-CLIENT		=	src/client
+CLIENT		=	src/client/
 
 O			=	obj/
 
@@ -12,15 +12,15 @@ I			=	inc/
 
 LIBFTP		=	lib/libft/
 
-SSRCS		=	
+SSRCS		=	$(SERVER)main.c
 
-CSRCS		=	
+CSRCS		=	$(CLIENT)main.c
 
 SOBJS		=	$(SSRCS:$SERVER%.c=$O%.o)
 
 COBJS		=	$(CSRCS:$CLIENT%.c=$O%.o)
 
-LIBFT		=	-L libft
+LIBFT		=	-L lib/libft/ -lft
 
 CC			=	gcc -g3 -fsanitize=address #-O3 #clang
 
@@ -30,12 +30,12 @@ all:			$(C_NAME) $(S_NAME)
 
 $(C_NAME):		$(COBJS)
 				make -C $(LIBFTP)
-				printf "Making Client\n"
+				printf "Making Client\n\n"
 				$(CC) $(FLAGS) $(CSRCS) $(LIBFT) -o $(C_NAME)
 
 $(S_NAME):		$(SOBJS)
 				make -C $(LIBFTP)
-				printf "Making Slient\n"
+				printf "Making Server\n\n"
 				$(CC) $(FLAGS) $(SSRCS) $(LIBFT) -o $(S_NAME)
 
 #$O%.o:			$(COBJS)

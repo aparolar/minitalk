@@ -52,6 +52,13 @@ fclean:			clean
 				rm -rf $(C_NAME)
 				rm -rf $(S_NAME)
 
+git_push:		fclean
+				make fclean -C $(LIBFTP)
+				git add .
+				git status
+				git commit -m "Update $(shell date)"
+				git push
+
 #test:			re
 #				./fract_ol 1
 

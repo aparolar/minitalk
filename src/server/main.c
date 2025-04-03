@@ -71,7 +71,7 @@ int	main(void)
 	s_pid = ft_itoa(getpid());
 	ft_putstr("PID = ");
 	ft_putstr(s_pid);
-	ft_putstr('\n');
+	ft_putstr("\n");
 	free(s_pid);
 	main_loop();
 	return (0);
